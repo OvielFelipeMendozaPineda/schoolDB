@@ -701,4 +701,215 @@
 
 ## VISTAS
 
+1. Devuelve un listado con el primer apellido, segundo apellido y el nombre de
+   todos los alumnos. El listado deberá estar ordenado alfabéticamente de
+   menor a mayor por el primer apellido, segundo apellido y nombre.
+
+```sql
+CREATE VIEW listarAlumnos as
+SELECT a.apellido1, a.apellido2, a.nombre 
+FROM alumno AS a
+ORDER BY a.apellido1 ASC, a.apellido2 ASC, a.nombre ASC;
++-----------+-----------+--------+
+| apellido1 | apellido2 | nombre |
++-----------+-----------+--------+
+| Díaz      | Fernández | Laura  |
+| Díaz      | Fernández | Laura  |
+| García    | López     | María  |
+| García    | López     | María  |
+| Hernández | Pérez     | Ana    |
+| Hernández | Pérez     | Ana    |
+| Martínez  | Sánchez   | Juan   |
+| Martínez  | Sánchez   | Juan   |
+| Rodríguez | Gómez     | Pedro  |
+| Rodríguez | Gómez     | Pedro  |
++-----------+-----------+--------+
+SELECT * FROM(listarAlumnos);
+```
+
+2. Devuelve un listado con todos los departamentos que no han impartido
+   asignaturas en ningún curso escolar.
+
+```sql
+CREATE VIEW departamentosSinCursoEscolar as
+SELECT nombre
+FROM departamento
+WHERE id NOT IN (
+    SELECT DISTINCT id_departamento 
+    FROM profesor
+    INNER JOIN asignatura ON profesor.id = asignatura.id_profesor
+);
+SELECT * FROM(departamentosSinCursoEscolar)
++-----------------------------+
+| nombre                      |
++-----------------------------+
+| Departamento de Matemáticas |
+| Departamento de Física      |
+| Departamento de Informática |
++-----------------------------+
+```
+
+3. Devuelve un listado con los profesores que no están asociados a un
+   departamento.
+
+```sql
+CREATE VIEW profesSinDepartamento as
+SELECT nombre, apellido1, apellido2
+from profesor
+WHERE id_departamento is null;
+select * from(profesSinDepartamento); 
++-----------+-----------+-----------+
+| nombre    | apellido1 | apellido2 |
++-----------+-----------+-----------+
+| Carlos    | Ruiz      | Gómez     |
+| Sofía     | López     | Martínez  |
+| Pablo     | González  | Fernández |
+| Elena     | Martín    | Sanz      |
+| Alejandro | Díaz      | Pérez     |
++-----------+-----------+-----------+
+```
+
+4. Devuelve un listado con las asignaturas que no tienen un profesor asignado.
+
+```sql
+CREATE VIEW asignaturasSinProfesores as
+SELECT asg.nombre
+FROM profesor as p
+RIGHT JOIN asignatura as asg on p.id = asg.id_profesor
+WHERE p.id  is null;
+SELECT  * from (asignaturasSinProfesores);
++----------+
+| nombre   |
++----------+
+| Historia |
++----------+
+```
+
+5. Devuelve un listado con el nombre de todos los departamentos que tienen
+   profesores que imparten alguna asignatura en el Grado en Ingeniería
+   Informática
+
+```sql
+CREATE VIEW departamentosSinProfesoresSinAsignatura as
+SELECT  d.id, d.nombre
+FROM profesor as p
+INNER JOIN departamento as d on p.id_departamento = d.id
+INNER JOIN asignatura as asg on p.id = asg.id_profesor
+INNER JOIN grado as g on asg.id_grado = g.id
+WHERE g.nombre = 'Ingeniería Informática';
+SELECT * FROM (departamentosSinProfesoresSinAsignatura);
++----+-----------------------------+
+| id | nombre                      |
++----+-----------------------------+
+|  1 | Departamento de Matemáticas |
+|  3 | Departamento de Informática |
++----+-----------------------------+
+```
+
+6. Devuelve el listado de los alumnos que nacieron en 1999.
+
+```sql
+create view listarAlumnosNacidos1999 as
+select a.id, a.nombre, a.apellido1, a.apellido2, a.id_ciudad, a.fecha_nacimiento, a.id_sexo
+FROM alumno as a
+WHERE YEAR(fecha_nacimiento) = 1999;
+SELECT * FROM (listarAlumnosNacidos1999);
++----+--------+-----------+-----------+-----------+------------------+---------+
+| id | nombre | apellido1 | apellido2 | id_ciudad | fecha_nacimiento | id_sexo |
++----+--------+-----------+-----------+-----------+------------------+---------+
+|  1 | María  | García    | López     |         1 | 1999-03-15       |       2 |
+|  3 | Ana    | Hernández | Pérez     |         3 | 1999-07-10       |       2 |
+|  5 | Laura  | Díaz      | Fernández |         2 | 1999-09-25       |       2 |
+|  6 | María  | García    | López     |         1 | 1999-03-15       |       2 |
+|  8 | Ana    | Hernández | Pérez     |         3 | 1999-07-10       |       2 |
+| 10 | Laura  | Díaz      | Fernández |         2 | 1999-09-25       |       2 |
++----+--------+-----------+-----------+-----------+------------------+---------+
+```
+
+7. Devuelve un listado con todos los alumnos que se han matriculado en
+   alguna asignatura durante el curso escolar 2018/2019.
+
+```sql
+create view listarAlumnosMatriculados2018-2019 as
+SELECT  al.nombre
+FROM alumno as al
+INNER JOIN alumno_se_matricula_asignatura as asm on al.id = asm.id_alumno
+INNER JOIN curso_escolar as cs on asm.id_curso_escolar = cs.id
+WHERE cs.id = 1;
+select * from (listarAlumnosMatriculados2018)
++--------+
+| nombre |
++--------+
+| María  |
+| Ana    |
+| Laura  |
++--------+
+```
+
+8. Calcula cuántos profesores hay en cada departamento. El resultado sólo
+   debe mostrar dos columnas, una con el nombre del departamento y otra
+   con el número de profesores que hay en ese departamento. El resultado
+   sólo debe incluir los departamentos que tienen profesores asociados y
+   deberá estar ordenado de mayor a menor por el número de profesores.
+
+```sql
+CREATE VIEW listarProfesEnDepartamento as
+SELECT 
+    d.nombre AS nombre_departamento, 
+    COUNT(p.id) AS cantidad_profesores
+FROM 
+    departamento AS d
+INNER JOIN 
+    profesor AS p ON d.id = p.id_departamento
+GROUP BY 
+    d.nombre
+ORDER BY 
+    cantidad_profesores DESC;
+select * from (listarProfesEnDepartamento);
++-----------------------------+---------------------+
+| nombre_departamento         | cantidad_profesores |
++-----------------------------+---------------------+
+| Departamento de Física      |                   2 |
+| Departamento de Informática |                   2 |
+| Departamento de Matemáticas |                   1 |
++-----------------------------+---------------------+
+```
+
+9. Devuelve el número total de alumnas que hay.
+
+```sql
+CREATE VIEW listarAlumnas as
+SELECT COUNT(a.id) as alumnas 
+FROM alumno as a
+INNER JOIN tipo_sexo as ts on a.id_sexo = ts.id
+WHERE ts.id = 2;
+select * from (listarAlumnas);
++---------+
+| alumnas |
++---------+
+|       6 |
++---------+
+```
+
+10. Averigua el nombre y los dos apellidos de los alumnos que no han dado de
+    alta su número de teléfono en la base de datos.
+
+```sql
+CREATE VIEW listarTelefonosAlumnosActivos as
+SELECT a.nombre, a.apellido1, a.apellido2
+FROM alumno as a
+INNER JOIN telefono_alumno as ta ON a.id = id_alumno
+WHERE id_alumno is NOT NULL;
+select  * from (listarTelefonosAlumnosActivos);
++--------+-----------+-----------+
+| nombre | apellido1 | apellido2 |
++--------+-----------+-----------+
+| María  | García    | López     |
+| Juan   | Martínez  | Sánchez   |
+| Ana    | Hernández | Pérez     |
++--------+-----------+-----------+
+```
+
+
+
 ## PROCEDIMIENTOS ALMACENADOS
