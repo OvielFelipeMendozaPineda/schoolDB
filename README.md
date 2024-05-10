@@ -3,8 +3,8 @@
 ## Consultas sobre una tabla
 
 1. Devuelve un listado con el primer apellido, segundo apellido y el nombre de
-  todos los alumnos. El listado deberá estar ordenado alfabéticamente de
-  menor a mayor por el primer apellido, segundo apellido y nombre.
+    todos los alumnos. El listado deberá estar ordenado alfabéticamente de
+    menor a mayor por el primer apellido, segundo apellido y nombre.
 
   ```sql
   SELECT a.apellido1, a.apellido2, a.nombre 
@@ -29,7 +29,7 @@
   
 
 2. Averigua el nombre y los dos apellidos de los alumnos que no han dado de
-  alta su número de teléfono en la base de datos.
+    alta su número de teléfono en la base de datos.
 
   ```sql
   SELECT a.nombre, a.apellido1, a.apellido2
@@ -68,7 +68,7 @@
    
 
 4. Devuelve el listado de profesores que no han dado de alta su número de
-  teléfono en la base de datos y además su nif termina en K.
+    teléfono en la base de datos y además su nif termina en K.
 
   ```sql
   SELECT p.id, p.nombre, p.apellido1, p.apellido2, p.id_ciudad, p.fecha_nacimiento, p.id_sexo, p.id_departamento
@@ -88,7 +88,7 @@
   
 
 5. Devuelve el listado de las asignaturas que se imparten en el primer
-  cuatrimestre, en el tercer curso del grado que tiene el identificador 7.
+    cuatrimestre, en el tercer curso del grado que tiene el identificador 7.
 
   ```sql
   SELECT asg.nombre
@@ -103,7 +103,7 @@
   ## Consultas multitabla (Composición interna)
 
 6. Devuelve un listado con los datos de todas las alumnas que se han
-  matriculado alguna vez en el Grado en Ingeniería Informática (Plan 2015).
+    matriculado alguna vez en el Grado en Ingeniería Informática (Plan 2015).
 
   ```sql
   SELECT alumno.*
@@ -120,7 +120,7 @@
   
 
 7. Devuelve un listado con todas las asignaturas ofertadas en el Grado en
-  Ingeniería Informática (Plan 2015).
+    Ingeniería Informática (Plan 2015).
 
   ```sql
   SELECT a.nombre
@@ -139,10 +139,10 @@
   
 
 8. Devuelve un listado de los profesores junto con el nombre del
-  departamento al que están vinculados. El listado debe devolver cuatro
-  columnas, primer apellido, segundo apellido, nombre y nombre del
-  departamento. El resultado estará ordenado alfabéticamente de menor a
-  mayor por los apellidos y el nombre.
+    departamento al que están vinculados. El listado debe devolver cuatro
+    columnas, primer apellido, segundo apellido, nombre y nombre del
+    departamento. El resultado estará ordenado alfabéticamente de menor a
+    mayor por los apellidos y el nombre.
 
   ```sql
   SELECT p.apellido1, p.apellido2, p.nombre, d.nombre AS nombre_departamento
@@ -164,7 +164,7 @@
   
 
 9. Devuelve un listado con el nombre de las asignaturas, año de inicio y año de
-  fin del curso escolar del alumno con nif 26902806M.
+    fin del curso escolar del alumno con nif 26902806M.
 
   ```sql
   SELECT asg.nombre, cs.año_inicio, cs.año_fin
@@ -179,8 +179,8 @@
   
 
 10. Devuelve un listado con el nombre de todos los departamentos que tienen
-  profesores que imparten alguna asignatura en el Grado en Ingeniería
-  Informática (Plan 2015).
+    profesores que imparten alguna asignatura en el Grado en Ingeniería
+    Informática (Plan 2015).
 
   ```sql
   SELECT  d.id, d.nombre
@@ -200,7 +200,7 @@
   
 
 11. Devuelve un listado con todos los alumnos que se han matriculado en
-   alguna asignatura durante el curso escolar 2018/2019.
+      alguna asignatura durante el curso escolar 2018/2019.
 
    ```sql
    SELECT  al.nombre
@@ -224,12 +224,12 @@
    Resuelva todas las consultas utilizando las cláusulas LEFT JOIN y RIGHT JOIN.
 
 12. Devuelve un listado con los nombres de todos los profesores y los
-   departamentos que tienen vinculados. El listado también debe mostrar
-   aquellos profesores que no tienen ningún departamento asociado. El listado
-   debe devolver cuatro columnas, nombre del departamento, primer apellido,
-   segundo apellido y nombre del profesor. El resultado estará ordenado
-   alfabéticamente de menor a mayor por el nombre del departamento,
-   apellidos y el nombre.
+      departamentos que tienen vinculados. El listado también debe mostrar
+      aquellos profesores que no tienen ningún departamento asociado. El listado
+      debe devolver cuatro columnas, nombre del departamento, primer apellido,
+      segundo apellido y nombre del profesor. El resultado estará ordenado
+      alfabéticamente de menor a mayor por el nombre del departamento,
+      apellidos y el nombre.
 
    ```sql
    SELECT 
@@ -265,7 +265,7 @@
    
 
 13. Devuelve un listado con los profesores que no están asociados a un
-   departamento.
+      departamento.
 
    ```sql
    SELECT p.nombre
@@ -286,7 +286,7 @@
    
 
 14. Devuelve un listado con los departamentos que no tienen profesores
-   asociados.
+      asociados.
 
    ```sql
    SELECT d.nombre
@@ -342,9 +342,9 @@
     
 
 17. Devuelve un listado con todos los departamentos que tienen alguna
-   asignatura que no se haya impartido en ningún curso escolar. El resultado
-   debe mostrar el nombre del departamento y el nombre de la asignatura que
-   no se haya impartido nunca.
+      asignatura que no se haya impartido en ningún curso escolar. El resultado
+      debe mostrar el nombre del departamento y el nombre de la asignatura que
+      no se haya impartido nunca.
 
    ```sql
    SELECT 
@@ -399,10 +399,10 @@
     
 
 20. Calcula cuántos profesores hay en cada departamento. El resultado sólo
-   debe mostrar dos columnas, una con el nombre del departamento y otra
-   con el número de profesores que hay en ese departamento. El resultado
-   sólo debe incluir los departamentos que tienen profesores asociados y
-   deberá estar ordenado de mayor a menor por el número de profesores.
+      debe mostrar dos columnas, una con el nombre del departamento y otra
+      con el número de profesores que hay en ese departamento. El resultado
+      sólo debe incluir los departamentos que tienen profesores asociados y
+      deberá estar ordenado de mayor a menor por el número de profesores.
 
    ```sql
    SELECT 
@@ -429,9 +429,9 @@
    
 
 21. Devuelve un listado con todos los departamentos y el número de profesores
-   que hay en cada uno de ellos. Tenga en cuenta que pueden existir
-   departamentos que no tienen profesores asociados. Estos departamentos
-   también tienen que aparecer en el listado.
+      que hay en cada uno de ellos. Tenga en cuenta que pueden existir
+      departamentos que no tienen profesores asociados. Estos departamentos
+      también tienen que aparecer en el listado.
 
    ```sql
    SELECT 
@@ -455,9 +455,9 @@
    
 
 22. Devuelve un listado con el nombre de todos los grados existentes en la base
-   de datos y el número de asignaturas que tiene cada uno. Tenga en cuenta que pueden existir grados que no tienen asignaturas asociadas. Estos grados
-   también tienen que aparecer en el listado. El resultado deberá estar
-   ordenado de mayor a menor por el número de asignaturas.
+      de datos y el número de asignaturas que tiene cada uno. Tenga en cuenta que pueden existir grados que no tienen asignaturas asociadas. Estos grados
+      también tienen que aparecer en el listado. El resultado deberá estar
+      ordenado de mayor a menor por el número de asignaturas.
 
    ```sql
    SELECT 
@@ -484,8 +484,8 @@
    
 
 6. Devuelve un listado con el nombre de todos los grados existentes en la base
-  de datos y el número de asignaturas que tiene cada uno, de los grados que
-  tengan más de 40 asignaturas asociadas.
+    de datos y el número de asignaturas que tiene cada uno, de los grados que
+    tengan más de 40 asignaturas asociadas.
 
   ```sql
   SELECT 
@@ -507,10 +507,10 @@
   
 
 7. Devuelve un listado que muestre el nombre de los grados y la suma del
-  número total de créditos que hay para cada tipo de asignatura. El resultado
-  debe tener tres columnas: nombre del grado, tipo de asignatura y la suma
-  de los créditos de todas las asignaturas que hay de ese tipo. Ordene el
-  resultado de mayor a menor por el número total de crédidos.
+    número total de créditos que hay para cada tipo de asignatura. El resultado
+    debe tener tres columnas: nombre del grado, tipo de asignatura y la suma
+    de los créditos de todas las asignaturas que hay de ese tipo. Ordene el
+    resultado de mayor a menor por el número total de crédidos.
 
   ```sql
   SELECT 
@@ -540,9 +540,9 @@
   
 
 8. Devuelve un listado que muestre cuántos alumnos se han matriculado de
-  alguna asignatura en cada uno de los cursos escolares. El resultado deberá
-  mostrar dos columnas, una columna con el año de inicio del curso escolar y
-  otra con el número de alumnos matriculados.
+    alguna asignatura en cada uno de los cursos escolares. El resultado deberá
+    mostrar dos columnas, una columna con el año de inicio del curso escolar y
+    otra con el número de alumnos matriculados.
 
   ```sql
   SELECT 
@@ -568,10 +568,10 @@
   
 
 9. Devuelve un listado con el número de asignaturas que imparte cada
-  profesor. El listado debe tener en cuenta aquellos profesores que no
-  imparten ninguna asignatura. El resultado mostrará cinco columnas: id,
-  nombre, primer apellido, segundo apellido y número de asignaturas. El
-  resultado estará ordenado de mayor a menor por el número de asignaturas.
+    profesor. El listado debe tener en cuenta aquellos profesores que no
+    imparten ninguna asignatura. El resultado mostrará cinco columnas: id,
+    nombre, primer apellido, segundo apellido y número de asignaturas. El
+    resultado estará ordenado de mayor a menor por el número de asignaturas.
 
   ```sql
   SELECT 
@@ -625,7 +625,7 @@
     
 
 11. Devuelve un listado con los profesores que no están asociados a un
-   departamento.
+      departamento.
 
    ```sqlite
    SELECT nombre, apellido1, apellido2
@@ -645,7 +645,7 @@
    
 
 12. Devuelve un listado con los departamentos que no tienen profesores
-   asociados.
+      asociados.
 
    ```sql
    SELECT nombre
@@ -656,7 +656,7 @@
    
 
 13. Devuelve un listado con los profesores que tienen un departamento
-   asociado y que no imparten ninguna asignatura.
+      asociado y que no imparten ninguna asignatura.
 
    ```sql
    SELECT p.nombre, p.apellido1
@@ -677,7 +677,7 @@
     
 
 15. Devuelve un listado con todos los departamentos que no han impartido
-   asignaturas en ningún curso escolar.
+      asignaturas en ningún curso escolar.
 
    ```sql
    SELECT nombre
@@ -830,7 +830,7 @@ SELECT * FROM (listarAlumnosNacidos1999);
    alguna asignatura durante el curso escolar 2018/2019.
 
 ```sql
-create view listarAlumnosMatriculados2018-2019 as
+create view listarAlumnosMatriculados2018_2019 as
 SELECT  al.nombre
 FROM alumno as al
 INNER JOIN alumno_se_matricula_asignatura as asm on al.id = asm.id_alumno
@@ -913,3 +913,210 @@ select  * from (listarTelefonosAlumnosActivos);
 
 
 ## PROCEDIMIENTOS ALMACENADOS
+
+1. Insertar alumno
+
+```sql
+DELIMITER $$
+DROP PROCEDURE IF EXISTS InsertarAlumno $$
+CREATE PROCEDURE InsertarAlumno (
+    IN p_nombre VARCHAR(25),
+    IN p_apellido1 VARCHAR(50),
+    IN p_apellido2 VARCHAR(50),
+    IN p_id_ciudad INT,
+    IN p_fecha_nacimiento DATE,
+    IN p_id_sexo INT
+)
+BEGIN
+    INSERT INTO alumno (nombre, apellido1, apellido2, id_ciudad, fecha_nacimiento, id_sexo) 
+    VALUES (p_nombre, p_apellido1, p_apellido2, p_id_ciudad, p_fecha_nacimiento, p_id_sexo);
+END $$
+DELIMITER ;
+CALL InsertarAlumno('Juan', 'Perez', 'Gomez', 1, '2000-01-15', 1);
+
+```
+
+2. Actualizar info de profesor
+
+   ```sql
+   DELIMITER $$
+   CREATE PROCEDURE ActualizarProfesor (
+       IN p_id INT,
+       IN p_nombre VARCHAR(25),
+       IN p_apellido1 VARCHAR(50),
+       IN p_apellido2 VARCHAR(50),
+       IN p_id_ciudad INT,
+       IN p_fecha_nacimiento DATE,
+       IN p_id_sexo INT
+   )
+   BEGIN
+       UPDATE profesor 
+       SET 
+           nombre = p_nombre,
+           apellido1 = p_apellido1,
+           apellido2 = p_apellido2,
+           id_ciudad = p_id_ciudad,
+           fecha_nacimiento = p_fecha_nacimiento,
+           id_sexo = p_id_sexo
+       WHERE id = p_id;
+   END $$
+   DELIMITER ;
+   CALL ActualizarProfesor(1, 'Maria', 'Gonzalez', 'Lopez', 2, '1985-07-20', 2);
+   
+   ```
+
+   3. Eliminar asignatura
+
+      ```sql
+      DELIMITER $$
+      CREATE PROCEDURE EliminarAsignatura (
+          IN p_id INT
+      )
+      BEGIN
+          DELETE FROM asignatura 
+          WHERE id = p_id;
+      END $$
+      DELIMITER ;
+      CALL EliminarAsignatura(3);
+      
+      ```
+
+      4.  insertar ciudad
+
+         ```sql
+         DELIMITER $$
+         CREATE PROCEDURE InsertarCiudad (
+             IN p_nombre VARCHAR(50)
+         )
+         BEGIN
+             INSERT INTO ciudad (nombre) VALUES (p_nombre);
+         END $$
+         DELIMITER ;
+         
+         CALL InsertarCiudad('Sevilla');
+         
+         ```
+
+         5. actualizar grado
+
+            ```sql
+            DELIMITER $$
+            CREATE PROCEDURE ActualizarGrado (
+                IN p_id INT,
+                IN p_nombre VARCHAR(100)
+            )
+            BEGIN
+                UPDATE grado
+                SET nombre = p_nombre
+                WHERE id = p_id;
+            END $$
+            DELIMITER ;
+            
+            CALL ActualizarGrado(2, 'Licenciatura en Biología');
+            
+            ```
+
+            6. Insertar tipo de asignatura
+
+               ```sql
+               DELIMITER $$
+               CREATE PROCEDURE InsertarTipoAsignatura (
+                   IN p_nombre VARCHAR(50)
+               )
+               BEGIN
+                   INSERT INTO tipo_asignatura (nombre) VALUES (p_nombre);
+               END $$
+               DELIMITER ;
+               
+               CALL InsertarTipoAsignatura('Electiva');
+               
+               ```
+
+               
+
+7. Eliminar telefono de alumnos
+
+   ```sql
+   DELIMITER $$
+   CREATE PROCEDURE EliminarTelefonoAlumno (
+       IN p_id INT
+   )
+   BEGIN
+       DELETE FROM telefono_alumno WHERE id = p_id;
+   END $$
+   DELIMITER ;
+   
+   CALL EliminarTelefonoAlumno(5);
+   
+   ```
+
+   8. Insertar nuevo curso escolar
+
+      ```sql
+      DELIMITER $$
+      CREATE PROCEDURE InsertarCursoEscolar (
+          IN p_año_inicio DATE,
+          IN p_año_fin DATE
+      )
+      BEGIN
+          INSERT INTO curso_escolar (año_inicio, año_fin) VALUES (p_año_inicio, p_año_fin);
+      END $$
+      DELIMITER ;
+      
+      CALL InsertarCursoEscolar('2024-09-01', '2025-06-30');
+      
+      ```
+
+      9. Actualizar direccion del profesot
+
+         ```sql
+         DELIMITER $$
+         CREATE PROCEDURE ActualizarDireccionProfesor (
+             IN p_id INT,
+             IN p_direccion VARCHAR(50)
+         )
+         BEGIN
+             UPDATE direccion_profesor
+             SET direccion = p_direccion
+             WHERE id = p_id;
+         END $$
+         DELIMITER ;
+         
+         CALL ActualizarDireccionProfesor(2, 'Av. Principal 123');
+         
+         ```
+
+         10. Insertar sexo
+
+             ```sql
+             DELIMITER $$
+             CREATE PROCEDURE InsertarSexo (
+                 IN p_nombre VARCHAR(50)
+             )
+             BEGIN
+                 INSERT INTO tipo_sexo (nombre) VALUES (p_nombre);
+             END $$
+             DELIMITER ;
+             
+             CALL InsertarSexo('Nuevo sexo');
+             
+             ```
+
+             
+
+--- vincular profesor con departamento
+
+ ALTER TABLE profesor
+    -> ADD COLUMN id_departamento INT;
+ ALTER TABLE profesor
+    -> ADD CONSTRAINT fk_id_departamento_profesor FOREIGN KEY (id_departamento)
+    -> REFERENCES departamento (id);
+ UPDATE profesor
+    -> SET id_departamento = 1
+    -> WHERE id = 1;
+ UPDATE profesor
+    -> SET id_departamento = 2
+    -> WHERE id IN (2,4);
+ UPDATE profesor
+    -> SET id_departamento = 3
+    -> WHERE id IN (3,5);
